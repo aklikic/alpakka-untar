@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- options of the project -->
+  <groupId>untar</groupId>
+  <artifactId>untar</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+  <name>untar</name>
+  <!-- set encoding of this project to UTF-8 to avoid warnings -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <akkaversion>2.6.9</akkaversion>
+    <akka.stream.alpakka.file.version>2.0.2</akka.stream.alpakka.file.version>
+    <sbtversion>2.13</sbtversion>
+    <scalaversion>2.13.3</scalaversion>
+    <docker.maven.plugin.version>0.33.0</docker.maven.plugin.version>
+    <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+    <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
+  </properties>
+  <!-- set up build process of this project -->
+
+
+
+  <dependencies>
+    <!-- akka libraries used in this project -->
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-stream_${sbtversion}</artifactId>
+      <version>${akkaversion}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.lightbend.akka</groupId>
+      <artifactId>akka-stream-alpakka-file_${sbtversion}</artifactId>
+      <version>${akka.stream.alpakka.file.version}</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+  </repositories>
+
+  <build>
+      <testSourceDirectory>src/test/java</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin-version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin-version}</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
